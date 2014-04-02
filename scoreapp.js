@@ -1,7 +1,9 @@
 // Set up a collection to contain player information. On the server,
 // it is backed by a MongoDB collection named "players".
 
-Players = new Meteor.Collection("players");
+/* // Here we dont use var because is a global thing, we want this in all app,
+ and we use it in server and client code.*/
+Players = new Meteor.Collection("players");  
 
 
 if (Meteor.isClient) {
@@ -19,7 +21,7 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
+  Meteor.startup(function () {   //this run before all the server code
     // code to run on server at startup
     if (Players.find().count() === 0) {
       var names = ["Rene Paulokat",
