@@ -10,6 +10,9 @@ if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return "Welcome to scoreapp.";
   };
+  Template.hello.players = function () {
+    return Players.find({}, {sort: {score: -1, name: 1}});
+  };
 
   Template.hello.events({
     'click input': function () {
